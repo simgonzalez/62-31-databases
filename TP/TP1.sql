@@ -6,11 +6,11 @@ WHERE per_clu_no = (SELECT per_clu_no FROM heg_personne WHERE LOWER(per_nom) = '
 -- 02
 SELECT clu_email AS "Mail"
 FROM heg_club
-WHERE clu_email LIKE '%heg.ch'
+WHERE LOWER(clu_email) LIKE '%@heg.ch'
 UNION
 SELECT per_email AS "Mail"
 FROM heg_personne
-WHERE per_email LIKE '%heg.ch';
+WHERE LOWER(per_email) LIKE '%@heg.ch';
 
 -- 03
 SELECT clu_nom                                                               AS "Club",
@@ -50,7 +50,8 @@ FROM heg_club
 
 -- 05 Insérer le nouveau club « HEG-Footing », affilié également à « Swiss Athletics », ayant comme président « Alain Proviste ». L’email du club est le même que celui de son président (la ville également).
 INSERT INTO heg_club (clu_no, clu_nom, clu_per_no, clu_email, clu_ville, clu_fed_no)
-VALUES ((SELECT max(clu_no) + 1 FROM heg_club),'HEG-Footing', (SELECT per_no FROM heg_personne WHERE per_nom = 'Proviste' AND per_prenom = 'Alain'),
+VALUES ((SELECT MAX(clu_no) + 1 FROM heg_club), 'HEG-Footing',
+        (SELECT per_no FROM heg_personne WHERE per_nom = 'Proviste' AND per_prenom = 'Alain'),
         (SELECT per_email FROM heg_personne WHERE per_nom = 'Proviste' AND per_prenom = 'Alain'),
         (SELECT per_ville FROM heg_personne WHERE per_nom = 'Proviste' AND per_prenom = 'Alain'),
         (SELECT fed_no FROM heg_federation WHERE fed_nom = 'Swiss Athletics'));
