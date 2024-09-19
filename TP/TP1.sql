@@ -17,8 +17,6 @@ SELECT clu_nom                                                               AS 
        (SELECT COUNT(per_no) FROM heg_personne WHERE per_clu_no = clu_no)    AS "Nombre de membres",
        (SELECT COUNT(com_no) FROM heg_competition WHERE com_clu_no = clu_no) AS "Nombre de compétitions organisées"
 FROM heg_club
-    LEFT JOIN heg_personne ON clu_no = per_clu_no
-    LEFT JOIN heg_competition ON clu_no = com_clu_no
 GROUP BY clu_no, clu_nom;
 
 -- 04
