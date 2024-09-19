@@ -4,11 +4,11 @@ FROM heg_personne
 WHERE per_clu_no = (SELECT per_clu_no FROM heg_personne WHERE LOWER(per_nom) = 'dorsa' OR LOWER(per_prenom) = 'dorsa');
 
 -- 02
-SELECT clu_email AS "Mail"
+SELECT clu_nom || ' : ' || clu_email AS "Mail"
 FROM heg_club
 WHERE LOWER(clu_email) LIKE '%@heg.ch'
 UNION
-SELECT per_email AS "Mail"
+SELECT per_prenom || ' ' || per_nom || ' : ' ||per_email AS "Mail"
 FROM heg_personne
 WHERE LOWER(per_email) LIKE '%@heg.ch';
 
