@@ -1,0 +1,10 @@
+BEGIN
+    pkg_compet.afficher_participation(2);
+    pkg_compet.afficher_participation(3);
+    pkg_compet.afficher_participation(5);
+    pkg_compet.afficher_participation(6);
+    pkg_compet.afficher_participation(7);
+    pkg_compet.afficher_participation(20);
+    pkg_compet.afficher_participation(55);
+    pkg_compet.afficher_participation;
+END;
