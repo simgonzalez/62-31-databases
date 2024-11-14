@@ -1,0 +1,8 @@
+set, get, del
+
+multiple: mset,mget,del
+listes: lpush,lrange,linsert,lrem
+sets: sadd,smembers,sismember,srem 
+hash: hset,hget,hdel,hgetall,hvals,hkeys 
+
+expire,ttl
